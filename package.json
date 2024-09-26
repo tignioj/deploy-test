@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && mv dist/index.html dist/templates/index.html",
+    "build": "vite build && node move-index.js",
     "preview": "vite preview"
   },
   "dependencies": {
