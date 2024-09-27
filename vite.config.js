@@ -10,7 +10,7 @@ export default defineConfig(({ command }) => {
     plugins: [
       vue(),
       // 仅在 build 模式下启用 flaskPlugin
-      command === 'build' && flaskPlugin()
+      command === 'flask-build' && flaskPlugin()
     ],
     resolve: {
       alias: {

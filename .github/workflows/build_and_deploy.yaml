@@ -22,13 +22,22 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build the project
+      - name: Build the project - flask-build
+        run: npm run flask-build  # 根据你的项目配置修改这个命令
+
+      - name: Deploy to flask-deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.MINIMAP_GUI_RELEASE }}
+          publish_dir: ./dist  # 这里指定你的编译结果目录
+          publish_branch: flask-deploy # 要推送到的目标仓库的分支
+
+      - name: Build the project - build
         run: npm run build  # 根据你的项目配置修改这个命令
 
-      - name: Deploy to another repository
+      - name: Deploy to gh-page
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.MINIMAP_GUI_RELEASE }}
           publish_dir: ./dist  # 这里指定你的编译结果目录
           publish_branch: gh-pages # 要推送到的目标仓库的分支
-          repository: tignioj/minimap-gui-deploy  # 目标仓库
